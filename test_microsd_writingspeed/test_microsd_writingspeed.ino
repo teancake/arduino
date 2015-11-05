@@ -1,8 +1,25 @@
+/*
+ * This program tests the writing speed of a microSD card module. 
+ 
+ * The microSD module used in this test can be found here
+ * http://www.ebay.com/itm/Micro-SD-Card-Module-TF-Reader-Storage-Card-Shield-SPI-for-Arduino-/272016000451?hash=item3f556ac5c3:g:xl4AAOSwbqpTt8jP
+
+ * Arduino MEGA2560 and Arduino Pro Mini boards are tested.
+
+ * The interface between the microSD module and the arduino is SPI which has 4 wires plus the VCC and the GND wires.
+ 
+ * NOTE: The microSD module has a 3.3v voltage regulator AMS1117 on it. AMS1117 has a significant  voltage drop when the input is connected to a 3.3v power source. So when the 3.3V version of Arduino Pro Mini board is used, make sure the power of the microSD module is connected to the RAW pin, not the VCC pin which has a 3.3v output.
+
+ * NOTE: When SPI is used, the SS pin of the AVR microcontroller is potentially disruppted. This corresponds to PIN 10 on Arduino Pro Mini. Use with due care. For Arduino MEGA2560, the SS pin of the AVR is not connected to the expansion ports. 
+ 
+ * TEA N CAKE <teancake.github@gmail.com> 
+*/
+
 #include <SPI.h>
 #include <SD.h>
-#include <TimerOne.h>
 
-
+// TimerOne is not used due to potential conflications.
+// #include <TimerOne.h>
 
 // The CS pin on the MicroSD card module is connected to pin CS_PIN
 // of the Arduino board
@@ -17,6 +34,7 @@
 #define DEBUG
 // software serial might be useful for boards like arduino pro mini 
 //#define USE_SOFTWARE_SERIAL
+
 // baudrate for debugging serial connection
 #define debugBaudRate 115200
 

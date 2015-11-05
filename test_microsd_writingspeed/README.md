@@ -14,6 +14,10 @@ There are also possible conflicts between mills()/micros() functions and the Tim
 
 mills() function could be used to simulate a timer interrupt, as shown in the code. The resolution of micros() is not 1 microsecond, but a few microseconds, which means that when micros() function is used to simulate a timer interrupt, the interval between subsequent interrupts cannot be less than its resolution.
 
+The microSD module has a 3.3v voltage regulator AMS1117 on it. AMS1117 has a significant  voltage drop when the input is connected to a 3.3v power. So, when the 3.3V version of Arduino Pro Mini board is used, make sure the power of the microSD module is connected to the RAW pin of the arduino board, not the VCC pin which has a 3.3v output.
+
 The writing speed varies considerably on microSD cards with different sizes/speed class. For my testing, it varies from around 10ms to 40ms for a flush operation.
+
+TEA N CAKE <teancake.github@gmail.com>
 
 
